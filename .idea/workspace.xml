@@ -13,8 +13,6 @@
     <list default="true" id="1d9fc116-b3eb-4a54-849a-7079a5562743" name="Default Changelist" comment="first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/starter/sparkpykafkajoin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/starter/sparkpykafkajoin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/starter/submit-event-kafkajoin.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/project/starter/submit-event-kafkajoin.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/starter/submit-event-kafkajoin.sh" beforeDir="false" afterPath="$PROJECT_DIR$/project/starter/submit-event-kafkajoin.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +57,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659388770181</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="first">
+      <created>1659517511472</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659517511472</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -79,10 +84,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="first" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1659388818209">
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1659517547048">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1659388818209" />
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1659517547048" />
     <state x="478" y="0" width="579" height="816" key="find.popup" timestamp="1659388792002">
       <screen x="0" y="0" width="1536" height="816" />
     </state>

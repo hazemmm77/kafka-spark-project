@@ -55,7 +55,7 @@ spark.sparkContext.setLogLevel('WARN')
 redisServerRawStreamingDF = spark                          \
     .readStream                                          \
     .format("kafka")                                     \
-    .option("kafka.bootstrap.servers", "localhost:9092") \
+    .option("kafka.bootstrap.servers", "kafka:19092") \
     .option("subscribe","redis-server")                  \
     .option("startingOffsets","earliest")\
     .load()
@@ -140,7 +140,7 @@ emailAndBirthYearStreamingDF=emailAndBirthDayStreamingDF.select(emailAndBirthDay
 stediEventsRawStreamingDF = spark                          \
     .readStream                                          \
     .format("kafka")                                     \
-    .option("kafka.bootstrap.servers", "localhost:9092") \
+    .option("kafka.bootstrap.servers", "kafka:19092") \
     .option("subscribe","bank-deposits")                  \
     .option("startingOffsets","earliest")\
     .load()
@@ -181,4 +181,5 @@ riskBirthDF=customerRiskStreamingDF.join(emailAndBirthDayStreamingDF,expr("""cus
 # +--------------------+-----+--------------------+---------+
 #
 # In this JSON Format {"customer":"Santosh.Fibonnaci@test.com","score":"28.5","email":"Santosh.Fibonnaci@test.com","birthYear":"1963"}
-riskBirthDF.writeStream.outputMode("append").format("console").start().awaitTermination()
+df=riskBirthDF.select(['customer','score','email','birthYear'])
+df.writeStream.outputMode("append").format("console").start().awaitTermination()
