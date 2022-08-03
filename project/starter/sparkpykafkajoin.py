@@ -60,7 +60,7 @@ redisServerRawStreamingDF = spark                          \
     .option("startingOffsets","earliest")\
     .load()
 
-# TO-DO: cast the value column in the streaming dataframe as a STRING 
+# TO-DO: cast the value column in the streaming dataframe as a STRING
 redisServerStreamingDF = redisServerRawStreamingDF.selectExpr("cast(key as string) key", "cast(value as string) value")
 # TO-DO:; parse the single column "value" with a json object in it, like this:
 # +------------+
@@ -82,7 +82,7 @@ redisServerStreamingDF = redisServerRawStreamingDF.selectExpr("cast(key as strin
 # "score":0.0
 # }]
 # }
-# 
+#
 # (Note: The Redis Source for Kafka has redundant fields zSetEntries and zsetentries, only one should be parsed)
 #
 # and create separated fields like this:
@@ -121,7 +121,7 @@ zSetDecodedEntriesStreamingDF= zSetEntriesEncodedStreamingDF.withColumn("Custome
 # TO-DO: parse the JSON in the Customer record and store in a temporary view called CustomerRecords
 zSetDecodedEntriesStreamingDF\
     .withColumn("Customer", from_json("Customer", customerSchema))\
-    .select(col('reservation.*'))\
+    .select(col('Customer.*'))\
     .createOrReplaceTempView("CustomerRecords")\
 
 # TO-DO: JSON parsing will set non-existent fields to null, so let's select just the fields we want, where they are not null as a new dataframe called emailAndBirthDayStreamingDF
@@ -133,7 +133,7 @@ emailAndBirthDayStreamingDF = emailAndBirthDayStreamingDF.withColumn('birthYear'
 
 
 # TO-DO: Select only the birth year and email fields as a new streaming data frame called emailAndBirthYearStreamingDF
-emailAndBirthYearStreamingDF=emailAndBirthDayStreamingDF.select(emailAndBirthDayStreamingDF['year'],emailAndBirthDayStreamingDF['email'])
+emailAndBirthYearStreamingDF=emailAndBirthDayStreamingDF.select(emailAndBirthDayStreamingDF['birthYear'],emailAndBirthDayStreamingDF['email'])
 
 # TO-DO: using the spark application object, read a streaming dataframe from the Kafka topic stedi-events as the source
 # Be sure to specify the option that reads all the events from the topic including those that were published before you started the spark stream
@@ -144,7 +144,7 @@ stediEventsRawStreamingDF = spark                          \
     .option("subscribe","bank-deposits")                  \
     .option("startingOffsets","earliest")\
     .load()
-# TO-DO: cast the value column in the streaming dataframe as a STRING 
+# TO-DO: cast the value column in the streaming dataframe as a STRING
 stediEventsStreamingDF = stediEventsRawStreamingDF.selectExpr("cast(key as string) key", "cast(value as string) value")
 # TO-DO: parse the JSON from the single column "value" with a json object in it, like this:
 # +------------+
@@ -167,8 +167,8 @@ stediEventsStreamingDF.withColumn("value",from_json("value",stediEventsSchema))\
 # TO-DO: execute a sql statement against a temporary view, selecting the customer and the score from the temporary view, creating a dataframe called customerRiskStreamingDF
 customerRiskStreamingDF=spark.sql("select * from CustomerRisk")
 # TO-DO: join the streaming dataframes on the email address to get the risk score and the birth year in the same dataframe
-riskBirthDF=customerRiskStreamingDF.join(emailAndBirthDayStreamingDF,expr("""customerRiskStreamingDF.customer=emailAndBirthDayStreamingDF.email """))
-# TO-DO: sink the joined dataframes to a new kafka topic to send the data to the STEDI graph application 
+riskBirthDF=customerRiskStreamingDF.join(emailAndBirthDayStreamingDF,expr("""customer=email """))
+# TO-DO: sink the joined dataframes to a new kafka topic to send the data to the STEDI graph application
 # +--------------------+-----+--------------------+---------+
 # |            customer|score|               email|birthYear|
 # +--------------------+-----+--------------------+---------+
@@ -180,5 +180,5 @@ riskBirthDF=customerRiskStreamingDF.join(emailAndBirthDayStreamingDF,expr("""cus
 # |Sarah.Clark@test.com| -4.0|Sarah.Clark@test.com|     1957|
 # +--------------------+-----+--------------------+---------+
 #
-# In this JSON Format {"customer":"Santosh.Fibonnaci@test.com","score":"28.5","email":"Santosh.Fibonnaci@test.com","birthYear":"1963"} 
+# In this JSON Format {"customer":"Santosh.Fibonnaci@test.com","score":"28.5","email":"Santosh.Fibonnaci@test.com","birthYear":"1963"}
 riskBirthDF.writeStream.outputMode("append").format("console").start().awaitTermination()
