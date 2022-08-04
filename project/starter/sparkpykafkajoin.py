@@ -141,7 +141,7 @@ stediEventsRawStreamingDF = spark                          \
     .readStream                                          \
     .format("kafka")                                     \
     .option("kafka.bootstrap.servers", "kafka:19092") \
-    .option("subscribe","bank-deposits")                  \
+    .option("subscribe","stedi-events")                  \
     .option("startingOffsets","earliest")\
     .load()
 # TO-DO: cast the value column in the streaming dataframe as a STRING
