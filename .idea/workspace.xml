@@ -12,7 +12,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1d9fc116-b3eb-4a54-849a-7079a5562743" name="Default Changelist" comment="first">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/starter/sparkpykafkajoin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/starter/sparkpykafkajoin.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +30,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../nd029-c2-apache-spark-and-spark-streaming-starter-master" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -64,7 +64,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659517511472</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="first">
+      <created>1659544582244</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1659544582244</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -84,10 +91,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="first" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1659517547048">
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1659630467574">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
-    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1659517547048" />
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1659630467574" />
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2" timestamp="1659544603151">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="361" y="141" key="Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816" timestamp="1659544603151" />
     <state x="478" y="0" width="579" height="816" key="find.popup" timestamp="1659388792002">
       <screen x="0" y="0" width="1536" height="816" />
     </state>
